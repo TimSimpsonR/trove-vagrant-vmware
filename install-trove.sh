@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 echo Updating apt and installing prerequisites.
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -y -q
@@ -7,7 +8,8 @@ apt-get install -y -q git-core libxml2-dev libxslt1-dev python-pexpect maven2 ap
 
 
 echo Linking Trove codebase.
-SHARE=/trove
+SHARE=$1
+SHARE=${SHARE:-/trove}
 mkdir -p /opt/stack $SHARE
 pushd $SHARE
     for REPO in python-troveclient trove trove-integration; do
